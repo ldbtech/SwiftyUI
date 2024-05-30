@@ -1,14 +1,12 @@
-//
-//  File.swift
-//  
-//
-//  Created by Ali Daho on 5/30/24.
-//
 
-import Foundation
+/**
+    - Welcome to Animations Library. 
+ 
+ */
+
 import SwiftUI
 
-public struct Animations{
+public struct Animations {
     public static let fadeIn = Animation.easeIn(duration: 0.3)
     public static let fadeOut = Animation.easeOut(duration: 0.3)
     public static let fadeInOut = Animation.easeInOut(duration: 0.3)
@@ -20,7 +18,8 @@ public struct Animations{
     public static let slowBounce = Animation.interpolatingSpring(stiffness: 20, damping: 2)
     
     public static let spin = Animation.linear(duration: 1).repeatForever(autoreverses: false)
-
+    
+    // Add more predefined animations as needed.
 }
 
 extension View {
@@ -60,6 +59,5 @@ extension View {
         self.applyAnimation(SwiftyAnimations.spin, value: value)
     }
     
-    // Add more animation functions as needed
+    // Add more animation functions as needed.
 }
-
