@@ -6,30 +6,27 @@
 //
 
 import SwiftUI
-
 public struct TailwindColorsView: View {
     public init() {}
+    @Environment(\.ColorScheme) var colorScheme
     
     public var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                Group {
-                    ColorSampleView(color: SwiftyColors.Amber._50, colorName: "Slate 50")
-                    ColorSampleView(color: SwiftyColors.Slate._100, colorName: "Slate 100")
-                    ColorSampleView(color: SwiftyColors.Slate._200, colorName: "Slate 200")
-                    ColorSampleView(color: SwiftyColors.Slate._300, colorName: "Slate 300")
-                    ColorSampleView(color: SwiftyColors.Slate._400, colorName: "Slate 400")
-                    ColorSampleView(color: SwiftyColors.Slate._500, colorName: "Slate 500")
-                    ColorSampleView(color: SwiftyColors.Slate._600, colorName: "Slate 600")
-                    ColorSampleView(color: SwiftyColors.Slate._700, colorName: "Slate 700")
-                    ColorSampleView(color: SwiftyColors.Slate._800, colorName: "Slate 800")
-                    ColorSampleView(color: SwiftyColors.Slate._900, colorName: "Slate 900")
-                    ColorSampleView(color: SwiftyColors.Slate._950, colorName: "Slate 950")
-                }
-                // Add other color groups similarly...
-            }
-            .padding()
+        let colors = (colorScheme == .dark) ? AppConfig.Colors.darkModeColors() : AppConfig.Colors.lightModeColors()
+        return VStack {
+            Text("Primary Color")
+                .padding()
+                .background(colors.primary)
+                .foregroundColor(colors.text)
+            Text("Secondary Color")
+                .padding()
+                .background(colors.secondary)
+                .foregroundColor(colors.secondaryText)
+            Text("Background Color")
+                .padding()
+                .background(colors.background)
+                .foregroundColor(colors.text)
         }
+        .background(colors.background)
     }
 }
 

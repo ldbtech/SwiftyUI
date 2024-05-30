@@ -4,6 +4,11 @@
 //
 //  Created by Ali Daho on 5/29/24.
 //
+/**
+    - App config responsible for pre defining values such as colors, typography and so on that will be used through the app. we Can also have the ability to override some stuff if developer has to.
+    - Reason for this file is to make it easy for focus more on backend than frontend. 
+ 
+ */
 
 import Foundation
 import SwiftUI
@@ -33,36 +38,61 @@ struct AppConfig{
          }
     }
     
-    // Nested Struct For Colours
-    struct Colours{
-        static var values: [String: Color] = [
-            "primary": Color(UIColor.systemBlue),
-            "secondary": Color(UIColor.systemGreen),
-            "background": Color(UIColor.systemBackground),
-            "text": Color(UIColor.label),
-            "secondaryText": Color(UIColor.secondaryLabel),
-            "tertiaryText": Color(UIColor.tertiaryLabel),
-            "quaternaryText": Color(UIColor.quaternaryLabel),
-            "placeholderText": Color(UIColor.placeholderText),
-            "link": Color(UIColor.link),
-            "separator": Color(UIColor.separator),
-            "opaqueSeparator": Color(UIColor.opaqueSeparator),
-            "systemFill": Color(UIColor.systemFill),
-            "secondarySystemFill": Color(UIColor.secondarySystemFill),
-            "tertiarySystemFill": Color(UIColor.tertiarySystemFill),
-            "quaternarySystemFill": Color(UIColor.quaternarySystemFill)
-        ]
+    // Example of our Coloring Structs. This can be change and that will change through whole app. you just to change this colors. and whole app will have different one.
+    struct Colors{
+        // Define color roles for light mode
+        static var lightPrimaryShade: String = "_500"
+        static var lightSecondaryShade: String = "_700"
+        static var lightBackgroundShade: String = "_50"
+        static var lightTextShade: String = "_900"
+        static var lightSecondaryTextShade: String = "_700"
         
-        static func value(for key: String) -> Color {
-            return values[key] ?? .clear
+        // Define color roles for dark mode
+        static var darkPrimaryShade: String = "_500"
+        static var darkSecondaryShade: String = "_300"
+        static var darkBackgroundShade: String = "_900"
+        static var darkTextShade: String = "_50"
+        static var darkSecondaryTextShade: String = "_300"
+        
+        public static var palette = SwiftyColors.Slate.self // This can be change and everything else will do.
+        
+        // Configured colors for light mode
+        static func lightModeColors() -> SwiftyColors.ConfiguredColor {
+            return SwiftyColors.ConfiguredColor(
+                primary: color(for: lightPrimaryShade),
+                secondary: color(for: lightSecondaryShade),
+                background: color(for: lightBackgroundShade),
+                text: color(for: lightTextShade),
+                secondaryText: color(for: lightSecondaryTextShade)
+            )
         }
         
-        static func update(_ key: String, value: Color) {
-            values[key] = value
+        // Configured colors for dark mode
+        static func darkModeColors() -> SwiftyColors.ConfiguredColor {
+            return SwiftyColors.ConfiguredColor(
+                primary: color(for: darkPrimaryShade),
+                secondary: color(for: darkSecondaryShade),
+                background: color(for: darkBackgroundShade),
+                text: color(for: darkTextShade),
+                secondaryText: color(for: darkSecondaryTextShade)
+            )
         }
         
-        static func add(_ key: String, value: Color) {
-            values[key] = value
+        private static func color(for shade: String) -> Color {
+            switch shade {
+            case "_50": return palette._50
+            case "_100": return palette._100
+            case "_200": return palette._200
+            case "_300": return palette._300
+            case "_400": return palette._400
+            case "_500": return palette._500
+            case "_600": return palette._600
+            case "_700": return palette._700
+            case "_800": return palette._800
+            case "_900": return palette._900
+            case "_950": return palette._950
+            default: return .clear
+            }
         }
     }
     

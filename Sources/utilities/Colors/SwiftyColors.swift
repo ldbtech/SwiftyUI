@@ -137,6 +137,16 @@ public struct SwiftyColors {
 
     // Add more color definitions as needed
     
+    
+    public struct ConfiguredColor{
+        let primary: Color
+        let secondary: Color
+        let background: Color
+        let text: Color
+        let secondaryText: Color
+        //Define others rules as needed
+    }
+    
 
 }
 
@@ -155,3 +165,4 @@ extension Color {
         self.init(red: r, green: g, blue: b)
     }
 }
+
