@@ -14,7 +14,7 @@ public struct TailwindColorsView: View {
         ScrollView {
             VStack(spacing: 10) {
                 Group {
-                    ColorSampleView(color: SwiftyColors.Slate._50, colorName: "Slate 50")
+                    ColorSampleView(color: SwiftyColors.Amber._50, colorName: "Slate 50")
                     ColorSampleView(color: SwiftyColors.Slate._100, colorName: "Slate 100")
                     ColorSampleView(color: SwiftyColors.Slate._200, colorName: "Slate 200")
                     ColorSampleView(color: SwiftyColors.Slate._300, colorName: "Slate 300")
@@ -31,10 +31,6 @@ public struct TailwindColorsView: View {
             .padding()
         }
     }
-}
-
-#Preview{
-    TailwindColorsView()
 }
 
 struct ColorSampleView: View {
